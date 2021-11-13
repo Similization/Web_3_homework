@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-2">
+        <p class="image-center">
+            <img class="img" src="{{ question.author.image }}" alt="">
+        </p>
+        <div class="center">
+            <button id="like-button" class="button">like</button>
+            <div class="rating-table">{{ question.rating }}</div>
+            <button id="dislike-button" class="button">dislike</button>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="question-header">
+            <h2>{{ question.name }}</h2>
+            {{ question.text }}
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <p class="answer-tags">Tags: 
+                    {% for tag in question.tags.all %}
+                        <a href="{% url "tag" tag.id %}">{{ tag }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

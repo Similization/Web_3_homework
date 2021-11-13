@@ -1,0 +1,28 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="col-9">
+        <div class="tag-border">
+            {% include "incl/question_header.html" %}
+        </div>
+
+        <div class="half-border"></div>
+
+        {% for answer in answers %}
+            {%include "incl/answer.html"%}
+        {% endfor %}
+        
+        <div class="center">
+            {% include "incl/pagination_4a.html" %}
+        </div>
+
+        <div class="half-border"></div>
+
+        <div class="answer">
+            <textarea name="answer"></textarea>
+            <button id="answer-button" class="button">Answer</button>
+        </div>
+    </div>
+{% endblock content %}
+            
