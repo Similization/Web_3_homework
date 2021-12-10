@@ -53,6 +53,11 @@ class Command(BaseCommand):
             for tag_id in sample(tags_ids, k=randint(1, 5)):
                 tags_questions_rels.append(Question.tags.through(tag_id=tag_id, question_id=question_id))
         Question.tags.through.objects.bulk_create(tags_questions_rels, batch_size=10000)
+
+        for tag in Tag.objects.all():
+            tag.rating = Question.objects.tag(tag).count()
+            tag.save()
+
 # ~~~~~~~~~~~~~~~~~  answers ~~~~~~~~~~~~~~~~~
         question_ids = Question.objects.values_list('id', flat=True)
 

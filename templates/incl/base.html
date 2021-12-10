@@ -45,6 +45,10 @@
             {% endblock content %}
             <div class="col-3">
                 <h2>Populat tags</h2>
+                {% for tag in popular_tags %}
+                  <a href="{% url "tag" tag.id %}">{{ tag }}</a>
+                  <br>
+                {% endfor %}
                 <big><a class="color-red" href="#">Kino</a></big> 
                 <small><a class="color-green" href="#">Zvezda po imeni solnce</a></small> 
                 <a class="color-blueviolet" href="#"></a>

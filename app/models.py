@@ -4,8 +4,15 @@ import datetime
 
 # Create your models here.
 
+class TagManager(models.Manager):
+    def popular(self):
+        return self.order_by('-rating')
+
 class Tag(models.Model):
     name = models.CharField(max_length=64, unique=True)
+    rating = models.IntegerField(default=0)
+
+    objects = TagManager()
 
     def __str__(self):
         return self.name
